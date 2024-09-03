@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap');
+
+:host {
+	font-family: 'Urbanist', Arial, sans-serif;
+}
+
+:host {
+	display: flex;
+	height: 100vh;
+	color: light-dark(var(--light-text-1), var(--dark-text-1));
+	font-family: Arial, sans-serif;
+}
+
+.app-container {
+	display: flex;
+	width: 100%;
+	padding: 2rem;
+	gap: 5rem;
+}
+
+.main-content {
+	flex: 1;
+	padding: 20px;
+	max-width: 800px;
+
+	.breadcrumb {
+		color: light-dark(var(--light-text-0), var(--dark-text-0));
+		margin-bottom: 20px;
+		font-size: 0.75rem;
+	}
+
+	.task-title {
+		font-size: 24px;
+		margin-bottom: 0.75rem;
+		margin-top: 1.5rem;
+		color: light-dark(var(--light-text-1), var(--dark-text-1));
+	}
+
+	.task-description {
+		color: light-dark(var(--light-text-0), var(--dark-text-0));
+		margin-bottom: 2.5rem;
+		margin-top: 1.25rem;
+	}
+
+	.divider {
+		border: none;
+		border-top: 1px solid light-dark(var(--light-bg-1), var(--dark-bg-1));
+		margin-top: 2rem;
+	}
+
+	.task-meta {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+
+		.avatar {
+			width: 24px;
+			height: 24px;
+			background-color: #ff5722;
+			color: #fff;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 0.75rem;
+		}
+
+		.creator-info {
+			color: light-dark(var(--light-text-0), var(--dark-text-0));
+		}
+	}
+
+
+
+}
