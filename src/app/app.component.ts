@@ -17,7 +17,6 @@ import { VeltService } from './services/velt.service';
 export class AppComponent {
 	title = 'task';
 
-
 	constructor(
 		private authService: AuthService,
 		private veltService: VeltService
@@ -26,22 +25,14 @@ export class AppComponent {
 	async ngOnInit(): Promise<void> {
 		// Follow the Setup Guide for more info: https://docs.velt.dev/get-started/setup/install
 
-
 		// Initialize Velt
 		await this.veltService.initializeVelt('AN5s6iaYIuLLXul0X4zf');
 
-
 		// Get your user and identify
-		const user = this.authService.getUser()();
+		const user = this.authService.userSignal();
 		if (user) {
 			await this.veltService.identifyUser(user);
 		}
-
-		// Set Document as a unique place in your app
-		await this.veltService.setDocument('task', { documentName: 'task' });
-
-		// Setting Dark Mode as Default
-		this.veltService.setDarkMode(true);
 	}
 
 }

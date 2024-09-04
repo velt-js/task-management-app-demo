@@ -1,6 +1,7 @@
-import { Component, OnInit, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, effect, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { VeltService } from '../../services/velt.service';
 
 interface Slide {
 	id: number;
@@ -17,15 +18,25 @@ interface Slide {
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DocumentComponent {
-	slides = signal<Slide[]>([
-		{ id: 1, imageUrl: 'assets/img/slide-1.png', note: '' },
-		{ id: 2, imageUrl: 'assets/img/slide-2.png', note: '' },
-		{ id: 3, imageUrl: 'assets/img/slide-3.png', note: '' },
-	]);
 
-	selectedSlide = signal<Slide>(this.slides()[0]);
+	// Getting the Velt Client
+	client = this.veltService.clientSignal();
 
-	selectSlide(slide: Slide) {
-		this.selectedSlide.set(slide);
+	constructor(
+		private veltService: VeltService
+	) {
+		// Set Document when the velt client is initialized
+		effect(() => {
+
+			this.client = this.veltService.clientSignal();
+			if (this.client) {
+
+				// Contain your comments in a document by setting a Document ID & Name
+				this.client.setDocument('task', { documentName: 'task' });
+
+				// Enable dark mode for Velt UI
+				this.client.setDarkMode(true);
+			}
+		});
 	}
 }
