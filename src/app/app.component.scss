@@ -13,6 +13,8 @@
 		align-items: flex-start;
 		flex-direction: column;
 		height: 100%;
+		max-height: 99dvh;
+		overflow-y: auto;
 
 		app-toolbar {
 			width: 100%;

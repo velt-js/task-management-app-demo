@@ -23,6 +23,17 @@
 	padding: 20px;
 	max-width: 800px;
 
+	p[contenteditable='true'] {
+		transition: all 300ms ease-in-out;
+		border-radius: 0.5rem;
+		
+		&:focus {
+			padding: 0.5rem;
+			outline: none;
+			background-color: light-darK(var(--light-bg-1), var(--dark-bg-1)),
+		}
+	}
+
 	.breadcrumb {
 		color: light-dark(var(--light-text-0), var(--dark-text-0));
 		margin-bottom: 20px;
