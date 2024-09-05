@@ -6,19 +6,79 @@
 
 		<h1 class="task-title">Build a feedback tool</h1>
 
-		<p class="task-description" contenteditable="true" placeholder="Add description...">Add description...</p>
-
-
 		<div class="task-meta">
 			<div class="avatar">A</div>
 			<span class="creator-info">Alan created the task, 2 mins ago</span>
 		</div>
 
-		<hr class="divider">
+		<div class="task-content">
+			<textarea class="task-description" contenteditable="true" placeholder="Add description...">
+We need to create a comprehensive feedback tool for our product. This tool should allow users to submitfeedback easily, categorize it (bug reports, feature requests, general comments), and provide screenshots orattachments.
+					
+1. User-friendly submission form
+2. Feedback categorization
+3. File attachment support
+4. Admin dashboard
+5. Response system
+6. Analytics for identifying trends
+					
+This tool will help us improve our product based on direct user input and prioritize our development efforts.</textarea>
 
-		<velt-comments></velt-comments>
-		<velt-inline-comments-section target-comment-element-id="container-id" shadow-dom="false"
-			dialog-variant="dialog-variant" variant="inline-section-variant">
-		</velt-inline-comments-section>
+			<div class="video-player" [attr.data-recording]="recordingId">
+				<ng-container *ngFor="let id of recordingIds">
+					<velt-recorder-player [recorderId]="id"></velt-recorder-player>
+				</ng-container>
+
+				<velt-recorder-notes></velt-recorder-notes>
+				<velt-recorder-control-panel mode="thread" shadow-dom="false"></velt-recorder-control-panel>
+			</div>
+
+			<div class="action-buttons">
+				<button>
+					<span class="icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+							xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+							<path
+								d="M12.5002 5.83326L7.08357 11.2499C6.75205 11.5815 6.56581 12.0311 6.56581 12.4999C6.56581 12.9688 6.75205 13.4184 7.08357 13.7499C7.41509 14.0815 7.86473 14.2677 8.33357 14.2677C8.80242 14.2677 9.25205 14.0815 9.58357 13.7499L15.0002 8.33326C15.6633 7.67022 16.0358 6.77095 16.0358 5.83326C16.0358 4.89558 15.6633 3.9963 15.0002 3.33326C14.3372 2.67022 13.4379 2.29773 12.5002 2.29773C11.5626 2.29773 10.6633 2.67022 10.0002 3.33326L4.58357 8.74993C3.58901 9.74449 3.03027 11.0934 3.03027 12.4999C3.03027 13.9065 3.58901 15.2554 4.58357 16.2499C5.57814 17.2445 6.92705 17.8032 8.33357 17.8032C9.7401 17.8032 11.089 17.2445 12.0836 16.2499L17.5002 10.8333"
+								stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</span>
+				</button>
+				<button>
+					<span class="icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+							xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+							<path
+								d="M7.49967 12.5L12.4997 7.49998M9.16634 4.99993L9.55217 4.55326C10.3337 3.77187 11.3936 3.33293 12.4987 3.33301C13.6039 3.33309 14.6637 3.77217 15.4451 4.55368C16.2265 5.33518 16.6654 6.39509 16.6653 7.50022C16.6653 8.60536 16.2262 9.6652 15.4447 10.4466L14.9997 10.8333M10.8331 15L10.5023 15.445C9.71167 16.2268 8.64462 16.6653 7.53271 16.6653C6.4208 16.6653 5.35375 16.2268 4.56313 15.445C4.17342 15.0596 3.86404 14.6008 3.65289 14.0951C3.44173 13.5894 3.33301 13.0468 3.33301 12.4987C3.33301 11.9507 3.44173 11.4081 3.65289 10.9024C3.86404 10.3966 4.17342 9.93781 4.56313 9.55248L4.99979 9.16665"
+								stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</span>
+				</button>
+				<button>
+					<span class="icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+							xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+							<path
+								d="M7.5 8.33333H7.50833M12.5 8.33333H12.5083M7.91667 12.5C8.18823 12.7772 8.51237 12.9974 8.87011 13.1477C9.22784 13.298 9.61197 13.3754 10 13.3754C10.388 13.3754 10.7722 13.298 11.1299 13.1477C11.4876 12.9974 11.8118 12.7772 12.0833 12.5M2.5 10C2.5 10.9849 2.69399 11.9602 3.0709 12.8701C3.44781 13.7801 4.00026 14.6069 4.6967 15.3033C5.39314 15.9997 6.21993 16.5522 7.12987 16.9291C8.03982 17.306 9.01509 17.5 10 17.5C10.9849 17.5 11.9602 17.306 12.8701 16.9291C13.7801 16.5522 14.6069 15.9997 15.3033 15.3033C15.9997 14.6069 16.5522 13.7801 16.9291 12.8701C17.306 11.9602 17.5 10.9849 17.5 10C17.5 9.01509 17.306 8.03982 16.9291 7.12987C16.5522 6.21993 15.9997 5.39314 15.3033 4.6967C14.6069 4.00026 13.7801 3.44781 12.8701 3.0709C11.9602 2.69399 10.9849 2.5 10 2.5C9.01509 2.5 8.03982 2.69399 7.12987 3.0709C6.21993 3.44781 5.39314 4.00026 4.6967 4.6967C4.00026 5.39314 3.44781 6.21993 3.0709 7.12987C2.69399 8.03982 2.5 9.01509 2.5 10Z"
+								stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</span>
+				</button>
+				<button>
+					<span class="icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+							xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+							<path
+								d="M15 15.8333L13.3333 14.1667V4.16667C13.3333 3.2325 14.0658 2.5 15 2.5C15.9342 2.5 16.6667 3.2325 16.6667 4.16667V14.1667L15 15.8333ZM15 15.8333H4.16667C3.72464 15.8333 3.30072 15.6577 2.98816 15.3452C2.67559 15.0326 2.5 14.6087 2.5 14.1667C2.5 13.7246 2.67559 13.3007 2.98816 12.9882C3.30072 12.6756 3.72464 12.5 4.16667 12.5H7.5C7.94203 12.5 8.36595 12.3244 8.67851 12.0118C8.99107 11.6993 9.16667 11.2754 9.16667 10.8333C9.16667 10.3913 8.99107 9.96738 8.67851 9.65482C8.36595 9.34226 7.94203 9.16667 7.5 9.16667H5M13.3333 5.83333H16.6667"
+								stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</span>
+				</button>
+				<span class="icon">
+					<velt-recorder-tool type='all'></velt-recorder-tool>
+				</span>
+			</div>
+		</div>
+
+
+
+
+
 	</div>
 </div>

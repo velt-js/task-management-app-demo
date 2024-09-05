@@ -19,6 +19,9 @@ interface Slide {
 })
 export class DocumentComponent {
 
+	recordingId = ''
+	recordingIds: string[] = []
+
 	// Getting the Velt Client
 	client = this.veltService.clientSignal();
 
@@ -39,4 +42,23 @@ export class DocumentComponent {
 			}
 		});
 	}
+
+	async ngOnInit(): Promise<void> {
+
+		// Load Old Recordings
+		const oldRecordingId: string[] = JSON.parse(localStorage.getItem('recordingIds') || '[]') as string[]
+		if (oldRecordingId) {
+			this.recordingIds = oldRecordingId
+		}
+
+		// After recording is completed, we set the recorder id
+		const recorderControlPanel = document.querySelector('velt-recorder-control-panel');
+		recorderControlPanel?.addEventListener('onRecordedData', (s: any) => {
+			this.recordingId = s.detail.id
+			this.recordingIds.push(s.detail.id)
+			localStorage.setItem('recordingIds', JSON.stringify(this.recordingIds))
+		});
+
+	}
+
 }
