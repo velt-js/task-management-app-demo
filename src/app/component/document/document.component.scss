@@ -13,6 +13,7 @@
 
 .app-container {
 	display: flex;
+	justify-content: space-between;
 	width: 100%;
 	padding: 2rem;
 	gap: 5rem;
@@ -120,4 +121,51 @@
 
 
 
+}
+
+.task-status {
+
+	padding: 2rem 1.5rem;
+	background-color: light-dark(var(--light-bg-0), var(--dark-bg-0));
+	border-radius: 2rem;
+
+	width: 40%;
+	min-width: 360px;
+	max-width: 400px;
+	height: fit-content;
+
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	.title {
+		opacity: 0.5;
+	}
+
+	.item-list {
+		margin-top: 1rem;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		gap: 0.25rem;
+
+		.status-item {
+			width: 100%;
+			border-radius: 0.75rem;
+
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			gap: 0.75rem;
+			padding: 0.75rem;
+
+			color: light-dark(var(--light-text-1), var(--dark-text-1));
+
+			cursor: pointer;
+
+			&:hover {
+				background-color: light-dark(var(--light-bg-1), var(--dark-bg-1));
+			}
+		}
+	}
 }
