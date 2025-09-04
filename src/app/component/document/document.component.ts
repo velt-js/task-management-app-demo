@@ -35,7 +35,7 @@ export class DocumentComponent {
 			if (this.client) {
 
 				// Contain your comments in a document by setting a Document ID & Name
-				this.client.setDocument('task', { documentName: 'task' });
+				this.client.setDocument('task-doc', { documentName: 'task' });
 
 				// Enable dark mode for Velt UI
 				this.client.setDarkMode(true);
